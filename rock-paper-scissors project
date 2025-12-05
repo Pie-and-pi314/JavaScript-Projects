@@ -73,7 +73,7 @@
       playGame('paper');
     "
     >
-      <img src="paper-emoji.png" class="move-icon" />
+      <img src="rock-paper-scissors-images/paper-emoji.png" class="move-icon" />
     </button>
     <button
       class="play-button"
@@ -81,7 +81,7 @@
       playGame('scissors');
     "
     >
-      <img src="scissors-emoji.png" class="move-icon" />
+      <img src="rock-paper-scissors-images/scissors-emoji.png" class="move-icon" />
     </button>
     <p class="result" id="js-result"></p>
     <p class="moves" id="js-moves"></p>
@@ -143,8 +143,8 @@
         }
         document.getElementById('js-result').innerHTML = `${result}`;
         document.getElementById('js-moves').innerHTML = `You
-                <img src = '${playerMove}-emoji.png' class = 'move-icon'>
-                <img src = '${computerMove}-emoji.png' class = 'move-icon'>
+                <img src = 'rock-paper-scissors-images/${playerMove}-emoji.png' class = 'move-icon'>
+                <img src = 'rock-paper-scissors-images/${computerMove}-emoji.png' class = 'move-icon'>
                 Computer`;
         updateScore();
       }
