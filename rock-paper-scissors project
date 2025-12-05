@@ -89,17 +89,13 @@
     <button
       class="reset-button"
       onclick="
-      score.win = 0;
-      score.loss = 0;
-      score.tie = 0;
-      document.getElementById('js-result').innerHTML = 'You\'ve reset your score.';
-      updateScore();
+        resetScore();
     "
     >
       Reset Score
     </button>
     <script>
-            let score = {
+      let score = JSON.parse(localStorage.getItem('score')) || {
         win: 0,
         loss: 0,
         tie: 0,
@@ -141,11 +137,13 @@
         } else if (result === 'Tie.') {
           score.tie++;
         }
+        localStorage.setItem('score', JSON.stringify(score));
         document.getElementById('js-result').innerHTML = `${result}`;
-        document.getElementById('js-moves').innerHTML = `You
-                <img src = 'rock-paper-scissors-images/${playerMove}-emoji.png' class = 'move-icon'>
-                <img src = 'rock-paper-scissors-images/${computerMove}-emoji.png' class = 'move-icon'>
-                Computer`;
+        document.getElementById('js-moves').innerHTML = `
+        You
+        <img src = 'rock-paper-scissors-images/${playerMove}-emoji.png' class = 'move-icon'>
+        <img src = 'rock-paper-scissors-images/${computerMove}-emoji.png' class = 'move-icon'>
+        Computer`;
         updateScore();
       }
       function pickComputerMove() {
@@ -164,6 +162,14 @@
         document.getElementById(
           'js-score'
         ).innerHTML = `Wins: ${score.win}  Losses: ${score.loss}  Ties: ${score.tie}`;
+      }
+      function resetScore(){
+        score.win = 0;
+        score.loss = 0;
+        score.tie = 0;
+        localStorage.removeItem('score');
+        document.getElementById('js-result').innerHTML = 'You\'ve reset your score.';
+        updateScore();
       }
       updateScore();
     </script>
