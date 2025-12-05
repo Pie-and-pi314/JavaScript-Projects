@@ -22,6 +22,9 @@
         <button onclick = "
             playGame('scissors');
         ">Scissors</button>
+        /*The texts are missing ids, since they are called later in the program by 
+        getElementById()
+        */
         <p class = 'result'></p>
         <p class = 'moves'></p>
         <p class = 'score'></p>
@@ -75,14 +78,17 @@
                 } else if (result === 'Tie'){
                     score.tie ++;
                 }
+                //Typo on id.
                 document.getElementById('js-result').innerHTML = result;
                 document.getElementById('js-moves').innerHTML = `You ${playerMove} - ${computerMove} Computer`;
                 updateScore();
             }
             
             function pickComputerMove(){
+                //typo on Math.random (It shows Math.ramdom instead)
                 const randomNumber = Math.ramdom();
                 let computerMove = '';
+                //typo: randomNmber
                 if (randomNumber >= 0 && randomNmber < 1/3){
                     computerMove = 'rock';
                 } else if (randomNumber >= 1/3 && randomNumber < 2/3){
@@ -93,6 +99,9 @@
                 return computerMove;
             }
             function updateScore(){
+                /*For method getElementById, no dots are needed to enter.
+                typo: '.score'
+                */
                 document.getElementById('.score').innerHTML = `Win: ${score.win}  Losses: ${score.loss}  Tie: ${score.tie}`;
             }
             updateScore();
