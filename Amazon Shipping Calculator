@@ -9,10 +9,18 @@
     </style>
   </head>
   <body>
+    <p>Youtube Subscribe Button</p>
+    <button id = 'subscribe-button' onclick = "
+      subscribe();
+    ">Subscribe</button>
     <p>Amazon Shipping Calculator</p>
     <p>Orders undder $40 = +$10 shipping</p>
     <p>Orders over $40 = FREE shipping</p>
-    <input placeholder = 'Cost of order' id = 'cost-input'>
+    <input placeholder = 'Cost of order' id = 'cost-input' onkeydown = "
+      if (event.key === 'Enter'){
+          calculateTotal();
+        }
+    ">
     <button onclick = "
       calculateTotal();
     ">Calculate</button>
@@ -24,8 +32,20 @@
         if (cost < 40){
           cost += 10;
         }
-        document.getElementById('result').innerHTML = `$${cost}`;
+        document.getElementById('result').innerHTML = `$${truncate2DecimalPlaces(cost)}`;
       }
+
+      function truncate2DecimalPlaces(num){
+        return Math.trunc(num * 100) / 100;
+      }
+
+      function subscribe(){
+        if (document.getElementById('subscribe-button').innerHTML === 'Subscribe'){
+          document.getElementById('subscribe-button').innerHTML = 'Subscribed';
+        } else {
+          document.getElementById('subscribe-button').innerHTML = 'Subscribe';
+        }
+      } 
     </script>
   </body>
 </html>
