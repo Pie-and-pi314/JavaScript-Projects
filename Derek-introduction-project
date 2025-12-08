@@ -24,7 +24,7 @@
   </head>
   <body>
     <h1>
-      脚趾belike:
+      Derek belike:
     </h1>
     <button 
       class='button'
@@ -57,19 +57,23 @@
       family
     </button>
     <script>
-      const maxLength = 2;
       let grayButtons = [];
       /*Add the button's id to the list. If the amount
       of elements exceeds 2, the oldest element
       will be removed.
       */
       function click(buttonId){
-         if (grayButtons.length < maxLength){
-          grayButtons.push(buttonId);
-         } else {
-          grayButtons.shift();
-          grayButtons.push(buttonId);
-         }
+        const maxLength = 2;
+        if (grayButtons.includes(buttonId)){
+          grayButtons.filter(grayButtons => grayButtons !== buttonId);
+        } else {
+          if (grayButtons.length < maxLength){
+            grayButtons.push(buttonId);
+          } else {
+            grayButtons.shift();
+            grayButtons.push(buttonId);
+          }
+        }
       }
       /*If a button's id is in the array grayButtons,
       it'll be added to the 'isClick' class, which
