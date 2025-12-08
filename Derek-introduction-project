@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head><title>George Introduction</title>
+  <head><title>Derek Introduction</title>
     <style>
       body {
         background-color: white;
@@ -34,7 +34,7 @@
         setColor('edgar');
       "
     >
-      fun
+      Edgar
     </button>
     <button 
       class='button'
@@ -44,7 +44,7 @@
         setColor('grade');
       "
      >
-      grade
+      Grade
     </button>
     <button 
       class='button'
@@ -54,7 +54,7 @@
         setColor('brain');
       "
      >
-      family
+      Brain
     </button>
     <script>
       let grayButtons = [];
