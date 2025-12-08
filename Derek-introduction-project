@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Derek Introduction</title>
+  <head><title>George Introduction</title>
     <style>
       body {
         background-color: white;
@@ -34,7 +34,7 @@
         setColor('edgar');
       "
     >
-      Edgar
+      fun
     </button>
     <button 
       class='button'
@@ -44,7 +44,7 @@
         setColor('grade');
       "
      >
-      Grade
+      grade
     </button>
     <button 
       class='button'
@@ -54,7 +54,7 @@
         setColor('brain');
       "
      >
-      Brain
+      family
     </button>
     <script>
       let grayButtons = [];
@@ -65,13 +65,11 @@
       function click(buttonId){
         const maxLength = 2;
         if (grayButtons.includes(buttonId)){
-          grayButtons.filter(grayButtons => grayButtons !== buttonId);
+          grayButtons = grayButtons.filter(grayButtons => grayButtons !== buttonId);
         } else {
-          if (grayButtons.length < maxLength){
-            grayButtons.push(buttonId);
-          } else {
+          grayButtons.push(buttonId);
+          if (grayButtons.length >= maxLength){
             grayButtons.shift();
-            grayButtons.push(buttonId);
           }
         }
       }
@@ -79,15 +77,12 @@
       it'll be added to the 'isClick' class, which
       makes it gray (selected).
       */
-      function setColor(buttonId){
-        const allButtonsIds = ['edgar','grade','brain'];        
-        const element = document.getElementById(buttonId);
-        for (const id of allButtonsIds){
-          if (grayButtons.includes(id)){
-            element.classList.add('isClicked');
-          } else {
-            element.classList.remove('isClicked')
-          }
+      function setColor(buttonId){     
+        const element = document.getElementById(buttonsId);
+        if (grayButtons.includes(buttonId)){
+          element.classList.add('isClicked');
+        } else {
+          element.classList.remove('isClicked');
         }
       }
     </script>
