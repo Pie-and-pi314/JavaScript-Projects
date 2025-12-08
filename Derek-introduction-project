@@ -27,11 +27,11 @@
       Derek belike:
     </h1>
     <button 
-      class='button isClicked'
+      class='button'
       id='edgar'
       onclick="
         click('edgar');
-        setColor('edgar');
+        updateColor();
       "
     >
       fun
@@ -41,7 +41,7 @@
       id='grade'
       onclick="
         click('grade');
-        setColor('grade');
+        updateColor();
       "
      >
       grade
@@ -51,7 +51,7 @@
       id='brain'
       onclick="
         click('brain');
-        setColor('brain');
+        updateColor();
       "
      >
       family
@@ -67,25 +67,27 @@
         if (grayButtons.includes(buttonId)){
           grayButtons = grayButtons.filter(grayButtons => grayButtons !== buttonId);
         } else {
-          if (grayButtons.length < maxLength){
-            grayButtons.push(buttonId);
-          } else {
+          grayButtons.push(buttonId);
+          if (grayButtons.length > maxLength){
             grayButtons.shift();
-            grayButtons.push(buttonId);
-          }
+          } 
         }
+        console.log(grayButtons);
       }
       /*If a button's id is in the array grayButtons,
       it'll be added to the 'isClick' class, which
       makes it gray (selected).
       */
-      function setColor(buttonId){
-        const element = document.getElementById(buttonId);
-        if (grayButtons.includes(buttonId)){
-          element.classList.add('isClicked');
-        } else {
-          element.classList.remove('isClicked');
-        }
+      function updateColor(){
+        const allButtons = document.querySelectorAll('.button');
+        allButtons.forEach(button =>{
+          const buttonId = button.id;
+          if (grayButtons.includes(buttonId)){
+            button.classList.add('isClicked');
+          } else {
+            button.classList.remove('isClicked');
+          }
+        })
       }
     </script>
   </body>
