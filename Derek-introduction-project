@@ -27,7 +27,7 @@
       Derek belike:
     </h1>
     <button 
-      class='button'
+      class='button isClicked'
       id='edgar'
       onclick="
         click('edgar');
@@ -67,9 +67,11 @@
         if (grayButtons.includes(buttonId)){
           grayButtons = grayButtons.filter(grayButtons => grayButtons !== buttonId);
         } else {
-          grayButtons.push(buttonId);
-          if (grayButtons.length >= maxLength){
+          if (grayButtons.length < maxLength){
+            grayButtons.push(buttonId);
+          } else {
             grayButtons.shift();
+            grayButtons.push(buttonId);
           }
         }
       }
@@ -77,8 +79,8 @@
       it'll be added to the 'isClick' class, which
       makes it gray (selected).
       */
-      function setColor(buttonId){     
-        const element = document.getElementById(buttonsId);
+      function setColor(buttonId){
+        const element = document.getElementById(buttonId);
         if (grayButtons.includes(buttonId)){
           element.classList.add('isClicked');
         } else {
