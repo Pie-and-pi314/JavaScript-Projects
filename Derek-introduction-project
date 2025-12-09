@@ -13,6 +13,7 @@
         background-color: #000;
         color: white;
         font-size: 20px;
+        font-weight: bold;
         margin-right: 25px;
         cursor: pointer;
       }
@@ -26,43 +27,52 @@
     <h1>
       Derek belike:
     </h1>
-    <button 
-      class='button'
-      id='edgar'
-      onclick="
-        click('edgar');
-        updateColor();
-      "
-    >
-      fun
-    </button>
-    <button 
-      class='button'
-      id='grade'
-      onclick="
-        click('grade');
-        updateColor();
-      "
-     >
-      grade
-    </button>
-    <button 
-      class='button'
-      id='brain'
-      onclick="
-        click('brain');
-        updateColor();
-      "
-     >
-      family
-    </button>
+    <div>
+        <button 
+          class='button'
+          id='edgar'
+          onclick="
+            toggleButton('edgar');
+            updateColor();
+          "
+        >
+          fun
+        </button>
+        <p id='edgar-description'></p>
+    </div>
+    <div>
+        <button 
+          class='button'
+          id='grade'
+          onclick="
+            toggleButton('grade');
+            updateColor();
+          "
+         >
+          grade
+        </button>
+        <p id='grade-description'></p>
+    </div>
+    <div>
+        <button 
+          class='button'
+          id='brain'
+          onclick="
+            toggleButton('brain');
+            updateColor();
+          "
+         >
+          family
+        </button>
+        <p id='brain-description'></p>
+    </div>
     <script>
       let grayButtons = [];
       /*Add the button's id to the list. If the amount
       of elements exceeds 2, the oldest element
       will be removed.
       */
-      function click(buttonId){
+      function toggleButton(buttonId){
         const maxLength = 2;
         if (grayButtons.includes(buttonId)){
           grayButtons = grayButtons.filter(grayButtons => grayButtons !== buttonId);
@@ -82,10 +92,14 @@
         const allButtons = document.querySelectorAll('.button');
         allButtons.forEach(button =>{
           const buttonId = button.id;
+          const textId = `${button.id}` + '-description';
+          const textElement = document.getElementById(textId);
           if (grayButtons.includes(buttonId)){
             button.classList.add('isClicked');
+            textElement.innerHTML = 'selected';
           } else {
             button.classList.remove('isClicked');
+            textElement.innerHTML = 'abandoned';
           }
         })
       }
