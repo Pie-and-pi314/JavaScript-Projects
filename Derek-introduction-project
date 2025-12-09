@@ -5,6 +5,16 @@
       body {
         background-color: white;
       }
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .button-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
       .button {
         height: 100px;
         width: 125px;
@@ -25,9 +35,10 @@
   </head>
   <body>
     <h1>
-      Derek belike:
+      Normal Student belike:
     </h1>
-    <div>
+    <div class='button-container'>
+      <div class="button-wrapper">
         <button 
           class='button'
           id='edgar'
@@ -38,9 +49,13 @@
         >
           fun
         </button>
-        <p id='edgar-description'></p>
-    </div>
-    <div>
+        <p 
+          id='edgar-description'
+        >
+          abandoned
+        </p>
+      </div>
+      <div class="button-wrapper">
         <button 
           class='button'
           id='grade'
@@ -48,12 +63,16 @@
             toggleButton('grade');
             updateColor();
           "
-         >
+          >
           grade
         </button>
-        <p id='grade-description'></p>
-    </div>
-    <div>
+        <p 
+          id='grade-description'
+        >
+          abandoned
+        </p>
+      </div>
+      <div class="button-wrapper">
         <button 
           class='button'
           id='brain'
@@ -61,10 +80,15 @@
             toggleButton('brain');
             updateColor();
           "
-         >
+          >
           family
         </button>
-        <p id='brain-description'></p>
+        <p 
+          id='brain-description'
+        >
+          abandoned
+        </p>
+      </div>
     </div>
     <script>
       let grayButtons = [];
