@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amazon Shipping Calculator</title>
+    <style>
+      body {
+        background-color: white;
+      }
+      .subscribe-button {
+        border: none;
+        background-color: black;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+      }
+      .is-subscribed {
+        background-color: rgb(240,240,240);
+        color: black;
+      }
+      .cost-input {
+        font-size: 15px;
+        /*padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        */
+        padding: 10px;
+      }
+
+      .calculate-button {
+        border: none;
+        background-color: green;
+        color: white;
+        font-size: 15px;
+        /*padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        */
+        padding: 12px 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Youtube Subscribe Button</p>
+    <button
+      class="subscribe-button"
+      id="js-subscribe-button"
+      onclick="
+      subscribe();
+    "
+    >
+      Subscribe
+    </button>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders undder $40 = +$10 shipping</p>
+    <p>Orders over $40 = FREE shipping</p>
+    <input
+      placeholder="Cost of order"
+      class = 'cost-input'
+      id='js-cost-input'
+      onkeydown="
+      handleEnter();
+    "
+    />
+    <button
+      class="calculate-button"
+      id="js-calculate-button"
+      onclick="
+      calculateTotal();
+    "
+    >
+      Calculate
+    </button>
+    <p id="result"></p>
+    <script>
+      //let isSubscribed = false;
+      function calculateTotal(){
+        const inputElement = document.getElementById('js-cost-input');
+        let cost = Number(inputElement.value);
+        if (cost <= 0){
+          cost = 0;
+        } else if (cost < 40){
+          /*if (isSubscribed === true){
+            cost = cost;
+          } else {
+            cost += 10;
+          }
+          */
+          cost += 10;
+        } else{
+          /*if(isSubscribed === true){
+            cost -= 10;
+          } else {}
+          */
+        }
+        
+        const total = truncate2DecimalPlaces(cost);
+        document.getElementById('result').innerHTML = `$${total}`;
+      }
+
+      function truncate2DecimalPlaces(num){
+        return Math.trunc(num * 100) / 100;
+      }
+
+      function handleEnter(){
+        if(event.key === 'Enter'){
+          calculateTotal();
+        }
+      }
+ 
+      function subscribe(){
+        const buttonElement = document.getElementById('js-subscribe-button');
+        if (buttonElement.innerHTML === 'Subscribe'){
+          buttonElement.innerHTML = 'Subscribed';
+          buttonElement.classList.add('is-subscribed');
+          //isSubscribed = true;
+        } else {
+          buttonElement.innerHTML = 'Subscribe';
+          buttonElement.classList.remove('is-subscribed');
+          //isSubscribed = false;
+        }
+      }
+    </script>
+  </body>
+</html>
