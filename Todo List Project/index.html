@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <div class="element-wrapper">
+      <p>Todo List Practice 1</p>
+      <input 
+        class="todo-input1"
+        id="js-todo-input1"
+        placeholder="Todo name"
+        onclick="renderList1();"
+        onkeydown="handleEnter1(event);"
+      >
+      <button class="add-button1">Add</button>
+    </div>
+    <div class="element-wrapper">
+      <p>Todo List Practice 2</p>
+      <input 
+        class="todo-input2"
+        id="js-todo-input2"
+        placeholder="Todo name"
+        onclick="renderList2();"
+        onkeydown="handleEnter2(event);"
+      >
+      <button class="add-button2">Add</button>
+      <p class="todo-list2"></p>
+    </div>
+    <div class="element-wrapper">
+      <p>Todo List</p>
+      <input 
+        class="todo-input3"
+        id="js-todo-input3"
+        placeholder="Todo name"
+        onclick="renderList3();"
+        onkeydown="handleEnter3(event);"
+      >
+      <button class="add-button3">Add</button>
+    </div>
+    <script>
+      let todoList1 = [];
+      function renderList1(){
+        const inputElement = document.querySelector('.todo-input1');
+        if (inputElement.value !== ''){
+          todoList1.push(inputElement.value);
+        }
+        inputElement.value = '';
+        let displayText = '';
+        for (let i = 0; i < todoList1.length; i++){
+          displayText += `Todo List:\n${i+1}. ${todoList1[i]}\n`;
+        }
+        console.log(displayText);
+      }
+      function handleEnter1(event){
+        const inputElement = document.querySelector('.todo-input1');
+        if (inputElement.value !== ''){
+          if (event.key == 'Enter'){
+            renderList1();
+          }
+        }
+      }
+
+      let todoList2 = [];
+      function renderList2(){
+        const inputElement = document.querySelector('.todo-input2');
+        if (inputElement.value !== ''){
+          todoList2.push(inputElement.value);
+        }
+        inputElement.value = '';
+
+        const displayElement = document.querySelector('.todo-list2');
+        let HTML = '';
+        for (let i = 0; i < todoList2.length; i++){
+          const todo = todoList2[i];
+          const html = `<p>${todo}</p>`;
+          HTML += html;
+        }
+        displayElement.innerHTML = HTML;
+      }
+      function handleEnter2(event){
+        const inputElement = document.querySelector('.todo-input2');
+        if (inputElement.value !== ''){
+          if (event.key == 'Enter'){
+            renderList2();
+          }
+        }
+      }
+      function renderList3(){
+        
+      }
+    </script>
+  </body>
+</html>
