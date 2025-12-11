@@ -1,52 +1,52 @@
-      body {
-        background-color: rgb(25,25,25);
-        color: white;
-        font-family: Arial;
-      }
-      .title {
-        font-size: 30px;
-        font-weight: bold;
-      }
-      p {
-        color: white;
-      }
+body {
+  background-color: rgb(25,25,25);
+  color: white;
+  font-family: Arial;
+}
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+p {
+  color: white;
+}
 
-      .result {
-        font-weight: bold;
-      }
+.result {
+  font-weight: bold;
+}
 
-      .play-button {
-        background-color: transparent;
-        /*
-        border-width: 3px;
-        border-style: solid;
-        border-color: white;
-        */
-        border: 3px solid white;
-        border-radius:60px;
-        height: 120px;
-        width: 120px;
-        margin-right: 10px;
-        cursor: pointer;
-      }
-      .move-icon {
-        height: 50px;
-      }
+.play-button {
+  background-color: transparent;
+  /*
+  border-width: 3px;
+  border-style: solid;
+  border-color: white;
+  */
+  border: 3px solid white;
+  border-radius:60px;
+  height: 120px;
+  width: 120px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.move-icon {
+  height: 50px;
+}
 
-      .result {
-        font-size: 25px;
-      }
+.result {
+  font-size: 25px;
+}
 
-      .score {
-        margin-top:50px;
-      }
+.score {
+  margin-top:50px;
+}
 
-      .reset-button {
-        background-color: white;
-        color: black;
-        font-size:15px;
-        border: none;
-        width: 120px;
-        padding: 10px 15px;
-        cursor: pointer;
-      }
+.reset-button {
+  background-color: white;
+  color: black;
+  font-size:15px;
+  border: none;
+  width: 120px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
