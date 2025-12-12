@@ -3,7 +3,12 @@
   <head>
     <title>Todo List</title>
     <style>
-
+      .add-button3 {
+        cursor: pointer;
+      }
+      .alert-text {
+        color: red;
+      }
     </style>
   </head>
   <body>
@@ -30,16 +35,22 @@
       <button class="add-button2">Add</button>
       <p class="todo-list2"></p>
     </div>
-    <div class="element-wrapper">
+    <div class="element-wrapper3">
       <p>Todo List</p>
       <input 
         class="todo-input3"
         id="js-todo-input3"
         placeholder="Todo name"
-        onclick="renderList3();"
         onkeydown="handleEnter3(event);"
       >
-      <button class="add-button3">Add</button>
+      <input type="date" class="time-input3">
+      <button 
+        class="add-button3"
+        onclick="renderList3();"
+      >
+        Add
+      </button>
+      <p class="todo-list3"></p>
     </div>
     <script>
       let todoList1 = [];
@@ -89,8 +100,54 @@
           }
         }
       }
-      function renderList3(){
-        
+
+      let todoList3 = [];
+      let HTML = '';
+      const inputElement = document.querySelector('.todo-input3');
+      const timeElement = document.querySelector('.time-input3');
+      const displayElement = document.querySelector('.todo-list3');
+      function renderList3(event){
+        let alertTextElement = document.querySelectorAll('.alert-text');
+        if ((inputElement.value !== '' && timeElement.value !== '') || event.key == 'Enter'){
+          todoList3.push(
+            {
+              name: inputElement.value,
+              dueDate: timeElement.value
+            }
+          );
+          inputElement.value = '';
+          timeElement.value = '';
+          
+          HTML = '';
+          for (i = 0; i < todoList3.length; i++){
+            const { name } = todoList3[i];
+            const { dueDate } = todoList3[i];
+            HTML += `
+              <p>
+                ${name}
+                ${dueDate}
+                <button onclick="
+                  todoList3.splice(${i}, 1);
+                  renderList3(event);
+                "
+                >Delete</button>
+              </p>
+            `;
+          }
+          if (alertTextElement){
+            alertTextElement.forEach(element => element.remove());
+          }
+        } else if (alertTextElement.length == 0) {
+          HTML += `<p class="alert-text">Please Enter Your Todo Completely!</p>`;
+        }
+        displayElement.innerHTML = HTML;
+        console.log(HTML);
+      }
+      function handleEnter3(event){
+        let alertTextElement = document.querySelectorAll('.alert-text');
+        if (event.key == 'Enter'){
+          renderList3();
+        }
       }
     </script>
   </body>
